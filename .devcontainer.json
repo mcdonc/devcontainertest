@@ -1,0 +1,12 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mkhl.direnv"
+      ]
+    }
+  },
+  "image": "ghcr.io/mcdonc/devenv:python-rewrite",
+  "overrideCommand": false,
+  "updateContentCommand": "devenv ci"
+}
