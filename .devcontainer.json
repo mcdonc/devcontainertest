@@ -2,11 +2,14 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "mkhl.direnv"
+          "mkhl.direnv",
+          "ms-python.python",
+          "ms-python.vscode-pylance",
+          "visualstudioexptteam.vscodeintellicode"
       ]
     }
   },
-    "image": "ghcr.io/mcdonc/devenv:pyrewrite",
+  "image": "ghcr.io/mcdonc/devenv:pyrewrite",
   "overrideCommand": false,
   "updateContentCommand": "devenv ci"
 }
