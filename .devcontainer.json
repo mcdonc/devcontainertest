@@ -6,7 +6,7 @@
       ]
     }
   },
-    "image": "ghcr.io/cachix/devenv:latest",
+    "image": "ghcr.io/mcdonc/devenv:pyrewrite",
   "overrideCommand": false,
   "updateContentCommand": "devenv ci"
 }

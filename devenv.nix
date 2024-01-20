@@ -9,7 +9,7 @@
 
   devcontainer= {
     enable = true;
-    settings.image = "ghcr.io/mcdonc/devenv:python-rewrite";
+    settings.image = "ghcr.io/mcdonc/devenv:pyrewrite";
   };
 
   # https://devenv.sh/scripts/
