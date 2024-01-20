@@ -6,7 +6,7 @@
       ]
     }
   },
-  "image": "ghcr.io/mcdonc/devenv:python-rewrite",
+    "image": "ghcr.io/cachix/devenv:latest",
   "overrideCommand": false,
   "updateContentCommand": "devenv ci"
 }
