@@ -9,7 +9,16 @@
 
   devcontainer= {
     enable = true;
-    settings.image = "ghcr.io/mcdonc/devenv:pyrewrite";
+    settings = {
+      image = "ghcr.io/mcdonc/devenv:pyrewrite";
+      customizations.vscode.extensions = [
+        "mkhl.direnv"
+        "ms-python.python"
+        "ms-python.vscode-pylance"
+        "visualstudioexptteam.vscodeintellicode"
+        "jnoortheen.nix-ide"
+      ];
+    };
   };
 
   # https://devenv.sh/scripts/
