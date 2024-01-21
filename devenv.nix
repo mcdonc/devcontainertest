@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 {
+  cachix.pull = [ "apex" ];
   # https://devenv.sh/basics/
   env.GREET = "devenv";
 
