@@ -47,7 +47,7 @@ in
     enable = true;
     settings = {
       options.updateContentCommand = ''
-        cachix use apex; devenv ci
+        cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci
       '';
       image = "ghcr.io/mcdonc/devenv:pyrewrite";
       customizations.vscode.extensions = [
@@ -73,6 +73,8 @@ in
   };
 
   services.mongodb = { enable = true; };
+
+  env.GREET = "devcontainertest";
 
   # https://devenv.sh/scripts/
   scripts.hello.exec = "echo hello from $GREET";
