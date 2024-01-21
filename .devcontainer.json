@@ -10,9 +10,6 @@
     }
   },
   "image": "ghcr.io/mcdonc/devenv:pyrewrite",
-  "options": {
-    "updateContentCommand": "cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci\n"
-  },
   "overrideCommand": false,
-  "updateContentCommand": "devenv ci"
+  "updateContentCommand": "cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci"
 }

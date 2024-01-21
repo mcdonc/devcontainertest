@@ -46,7 +46,7 @@ in
   devcontainer= {
     enable = true;
     settings = {
-      options.updateContentCommand = ''
+      updateContentCommand = ''
         cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci'';
       image = "ghcr.io/mcdonc/devenv:pyrewrite";
       customizations.vscode.extensions = [
