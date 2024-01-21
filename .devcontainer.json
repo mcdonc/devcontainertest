@@ -12,5 +12,5 @@
   },
   "image": "ghcr.io/mcdonc/devenv:pyrewrite",
   "overrideCommand": false,
-  "updateContentCommand": "devenv ci"
+  "updateContentCommand": "cachix use apex; devenv ci"
 }
