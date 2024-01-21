@@ -2,7 +2,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "mkhl.direnv",
         "ms-python.python",
         "ms-python.vscode-pylance",
         "visualstudioexptteam.vscodeintellicode",
@@ -12,5 +11,5 @@
   },
   "image": "ghcr.io/mcdonc/devenv:pyrewrite",
   "overrideCommand": false,
-  "updateContentCommand": "cachix use apex; devenv ci"
+  "updateContentCommand": "devenv ci"
 }

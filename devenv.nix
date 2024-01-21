@@ -1,25 +1,67 @@
 { pkgs, ... }:
 
-{
-  cachix.pull = [ "apex" ];
-  # https://devenv.sh/basics/
-  env.GREET = "devenv";
+let
+  mssql-odbc-driver = pkgs.unixODBCDrivers.msodbcsql17;
 
-  # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  odbcini = pkgs.writeTextFile {
+    name = "eao_dash-odbcini";
+    text = ''
+      [${mssql-odbc-driver.fancyName}]
+      Description = ${mssql-odbc-driver.meta.description}
+      Driver = ${mssql-odbc-driver}/${mssql-odbc-driver.driver}
+    '';
+  };
+
+  odbcsysini = builtins.dirOf odbcini;
+  odbcinstini = builtins.baseNameOf odbcini;
+
+in
+
+{
+  packages = with pkgs; [ stdenv.cc.cc mssql-odbc-driver git ];
+
+  process = {
+    implementation = "process-compose";
+    process-compose = {
+      tui = "false";
+      port = 9999;
+    };
+  };
+
+  process-managers.process-compose = {
+    enable = true;
+  };
+
+  languages.python = {
+    libraries = with pkgs; [ zlib imagemagick unixODBC ];
+    enable = true;
+    version = "3.11.7";
+    venv = {
+      enable = true;
+    };
+  };
+
+  pre-commit.hooks = { flake8.enable = true; };
 
   devcontainer= {
     enable = true;
     settings = {
+      options.updateContentCommand = ''
+        cachix use apex; devenv ci
+      '';
       image = "ghcr.io/mcdonc/devenv:pyrewrite";
       customizations.vscode.extensions = [
         "ms-python.python"
         "ms-python.vscode-pylance"
         "visualstudioexptteam.vscodeintellicode"
         "jnoortheen.nix-ide"
+
       ];
     };
   };
+
+  env.ODBCSYSINI = odbcsysini;
+  env.ODBCINSTINI = odbcinstini;
 
   services.postgres = {
     enable = true;
@@ -40,14 +82,4 @@
     git --version
   '';
 
-  # https://devenv.sh/languages/
-  # languages.nix.enable = true;
-
-  # https://devenv.sh/pre-commit-hooks/
-  # pre-commit.hooks.shellcheck.enable = true;
-
-  # https://devenv.sh/processes/
-  # processes.ping.exec = "ping example.com";
-
-  # See full reference at https://devenv.sh/reference/options/
 }

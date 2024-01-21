@@ -1,4 +1,25 @@
 inputs:
   nixpkgs:
-    url: github:NixOS/nixpkgs/nixpkgs-unstable
+    url: github:mcdonc/nixpkgs/nixos-23.11-python-env-venv
+  nixpkgs-python:
+    url: github:cachix/nixpkgs-python
+    inputs:
+      nixpkgs:
+        follows: nixpkgs
+  nix2container:
+    url: github:nlewo/nix2container
+    inputs:
+      nixpkgs:
+        follows: nixpkgs
+  mk-shell-bin:
+    url: github:rrbutani/nix-mk-shell-bin
+  devenv:
+    url: github:mcdonc/devenv/python-rewrite
+  overlays:
+    url: path:./overlays
+    overlays:
+      - default
+
 allowUnfree: true
+permittedInsecurePackages:
+  - openssl-1.1.1w
