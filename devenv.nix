@@ -47,8 +47,7 @@ in
     enable = true;
     settings = {
       options.updateContentCommand = ''
-        cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci
-      '';
+        cachix use devenv;cachix use apex;cachix use nixpkgs-python;devenv ci'';
       image = "ghcr.io/mcdonc/devenv:pyrewrite";
       customizations.vscode.extensions = [
         "ms-python.python"
