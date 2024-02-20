@@ -14,7 +14,8 @@ inputs:
   mk-shell-bin:
     url: github:rrbutani/nix-mk-shell-bin
   devenv:
-    url: github:mcdonc/devenv/python-rewrite
+    #url: github:mcdonc/devenv/python-rewrite
+    url: path:/home/chrism/projects/devenv/src/modules
   overlays:
     url: path:./overlays
     overlays:
